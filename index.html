@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic Scratch</title>
+    <link rel="icon" href="icon.png" type="image/png">
+
+    <style>
+        :root {
+            --main-gradient-1: #4A90E2;
+            --main-gradient-2: #6D4AE2;
+            --sparkle-yellow: rgba(255, 234, 99, 0.9);
+            --sparkle-pink: rgba(255, 120, 170, 0.9);
+            --sparkle-blue: rgba(120, 200, 255, 0.9);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", Arial, sans-serif;
+            color: white;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, var(--main-gradient-1), var(--main-gradient-2));
+            background-size: 400% 400%;
+            animation: gradientShift 10s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Sparkle animation */
+        .sparkle {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: floatUp 6s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-120vh) scale(0.5); opacity: 0; }
+        }
+
+        /* Layout */
+        .container {
+            text-align: center;
+            padding: 80px 20px;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .app-icon {
+            width: 150px;
+            height: 150px;
+            border-radius: 22px;
+            box-shadow: 0px 10px 25px rgba(0,0,0,0.25);
+            animation: popIn 1.2s ease forwards;
+        }
+
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.5); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        h1 {
+            font-size: 42px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        p {
+            font-size: 20px;
+            opacity: 0.95;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #FF6B6B;
+            padding: 14px 28px;
+            border-radius: 50px;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+            transition: 0.25s ease;
+        }
+
+        .button:hover {
+            background: #ff4f4f;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.30);
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 15px;
+            opacity: 0.75;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Sparkles -->
+    <script>
+        const colors = ["var(--sparkle-yellow)", "var(--sparkle-pink)", "var(--sparkle-blue)"];
+
+        function createSparkle() {
+            const sparkle = document.createElement("div");
+            sparkle.classList.add("sparkle");
+            sparkle.style.left = Math.random() * 100 + "vw";
+            sparkle.style.bottom = "-20px";
+            sparkle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            sparkle.style.animationDuration = (5 + Math.random() * 5) + "s";
+            sparkle.style.animationDelay = Math.random() * 3 + "s";
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 10000);
+        }
+
+        setInterval(createSparkle, 400);
+    </script>
+
+    <div class="container">
+        <img src="icon.png" class="app-icon" alt="Magic Scratch Icon">
+
+        <h1>Magic Scratch</h1>
+
+        <p>
+            A fun and colorful scratch app for kids!  
+            Scratch the magic gift box daily and discover exciting surprises,
+            cute animals, and fun facts.
+        </p>
+
+        <a class="button" href="https://play.google.com/store/apps/details?id=com.magicscratch.kids" 
+           target="_blank">
+            ▶ Download on Play Store
+        </a>
+
+        <div class="footer">
+            © 2025 Magic Scratch · All Rights Reserved
+        </div>
+    </div>
+
+</body>
+</html>
